@@ -9,15 +9,22 @@ This repository builds a multiclass intrusion detection workflow using network t
 Modern network environments generate large volumes of traffic, and malicious activity can be difficult to detect using static rules alone. This project frames intrusion detection as a supervised classification task and evaluates which model performs best on a realistic imbalanced cyber dataset.
 
 ## Objectives
-- Classify network traffic into normal traffic and multiple attack categories.
-- Preserve the original workflow and recorded model results.
-- Compare model performance using macro-averaged metrics for an imbalanced classification problem.
-- Keep preprocessing and resampling steps aligned with realistic train/test evaluation.
+
+- Develop a machine learning-based system for network intrusion detection.
+- Perform binary classification to distinguish between normal and attack traffic.
+- Perform multiclass classification to identify 11 different traffic and attack categories.
+- Analyze and preprocess network traffic data for effective model development.
+- Address class imbalance using SMOTE applied only to the training data.
+- Compare machine learning models for both binary and multiclass classification tasks.
+- Evaluate model performance using Accuracy, Precision, Recall, and Macro F1-score.
+- Analyze model performance across individual attack classes and overall classification performance.
+- Identify suitable models based on their ability to detect different types of network traffic and attacks.
 
 ## Dataset
 The dataset is split across multiple CSV files, one for each attack family. These files are combined into a single DataFrame before modeling.
 
-The raw CSV files are intentionally not committed to GitHub and are excluded via the repository .gitignore file. Place the required dataset files in the data/ folder before running the notebook locally.
+The raw dataset files are currently not included in this GitHub repository and are excluded using the `.gitignore` file. The required dataset files may be added to the repository in the future.
+
 
 ## Attack Categories
 The multiclass target is `attack_type`, which includes:
@@ -33,7 +40,6 @@ The multiclass target is `attack_type`, which includes:
 - satan
 - smurf
 
-A simpler binary task is also included in the notebook using the `attack` column to distinguish `normal` vs `attack`.
 
 ## Workflow
 1. Load attack datasets
@@ -56,7 +62,6 @@ A simpler binary task is also included in the notebook using the `attack` column
 - Random Forest + SMOTE
 
 ## Results
-The notebook keeps the original recorded metrics without changing the values.
 
 | Model | Macro F1 |
 | --- | ---: |
